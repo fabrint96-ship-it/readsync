@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReadSync — Marcapáginas Digital</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="heroInner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">📖</div>
+        <div>
+          <h1>ReadSync</h1>
+          <p>Tu marcapáginas digital con aire de biblioteca</p>
+        </div>
+      </div>
+
+      <div class="heroRight">
+        <div class="searchBox">
+          <input id="search" type="search" placeholder="Buscar por título, autor o etiqueta..." />
+          <select id="filter">
+            <option value="all">Todos</option>
+            <option value="reading">Leyendo</option>
+            <option value="finished">Terminado</option>
+            <option value="favorite">Favoritos</option>
+          </select>
+        </div>
+
+        <div class="heroActions">
+          <button id="btnExport" class="btn ghost" type="button">Exportar</button>
+          <label class="btn ghost filelike" for="fileImport">Importar</label>
+          <input id="fileImport" type="file" accept="application/json" hidden />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel addPanel">
+      <div class="panelHead">
+        <h2>Añadir lectura</h2>
+        <p class="muted">Guarda el progreso como si fuese un marcapáginas.</p>
+      </div>
+
+      <form id="bookForm" class="form">
+        <div class="grid">
+          <label>
+            Título
+            <input id="title" required placeholder="Ej: El nombre del viento" />
+          </label>
+
+          <label>
+            Autor/a
+            <input id="author" required placeholder="Ej: Patrick Rothfuss" />
+          </label>
+
+          <label>
+            Páginas totales
+            <input id="pages" type="number" min="1" required placeholder="Ej: 720" />
+          </label>
+
+          <label>
+            Página actual
+            <input id="current" type="number" min="0" required placeholder="Ej: 120" />
+          </label>
+
+          <label class="span2">
+            Etiquetas (comas)
+            <input id="tags" placeholder="fantasía, noche, relax" />
+          </label>
+
+          <label class="span2">
+            Color del lomo
+            <div class="colorRow">
+              <input id="spineColor" type="color" value="#7aa8ff" aria-label="Color del lomo del libro" />
+              <div class="swatches" aria-label="Colores rápidos">
+                <button class="sw" type="button" data-color="#7aa8ff" aria-label="Azul suave"></button>
+                <button class="sw" type="button" data-color="#ffb86b" aria-label="Melocotón"></button>
+                <button class="sw" type="button" data-color="#8be7c3" aria-label="Menta"></button>
+                <button class="sw" type="button" data-color="#d8a9ff" aria-label="Lavanda"></button>
+                <button class="sw" type="button" data-color="#ffd66b" aria-label="Amarillo suave"></button>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div class="row">
+          <button class="btn primary" type="submit">Guardar</button>
+          <button id="btnClear" class="btn" type="button">Limpiar</button>
+        </div>
+
+        <div class="statsBar">
+          <span id="stats" class="muted"></span>
+          <span class="muted">Tip: marca favoritos con ⭐ y usa “Leyendo/Terminado”.</span>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel shelfPanel">
+      <div class="panelHead shelfHead">
+        <h2>Estantería</h2>
+        <div class="sortRow">
+          <select id="sort">
+            <option value="recent">Más recientes</option>
+            <option value="progress">Más avanzados</option>
+            <option value="az">A → Z</option>
+            <option value="spine">Color del lomo</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="tagBar" class="tagBar" aria-label="Filtros por etiqueta"></div>
+
+      <div id="empty" class="empty" hidden>
+        <div class="emptyIcon" aria-hidden="true">📚</div>
+        <h3>Tu estantería está vacía</h3>
+        <p>Añade tu primera lectura o importa un JSON.</p>
+      </div>
+
+      <div id="grid" class="shelf" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- Modal editar -->
+  <dialog id="editDialog" class="modal">
+    <form id="editForm" method="dialog" class="modalBody">
+      <div class="modalHead">
+        <h3>Editar lectura</h3>
+        <button id="btnCloseModal" class="iconBtn" type="button" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="grid">
+        <label>
+          Título
+          <input id="eTitle" required />
+        </label>
+
+        <label>
+          Autor/a
+          <input id="eAuthor" required />
+        </label>
+
+        <label>
+          Páginas totales
+          <input id="ePages" type="number" min="1" required />
+        </label>
+
+        <label>
+          Página actual
+          <input id="eCurrent" type="number" min="0" required />
+        </label>
+
+        <label class="span2">
+          Etiquetas (comas)
+          <input id="eTags" />
+        </label>
+
+        <label class="span2">
+          Color del lomo
+          <input id="eColor" type="color" />
+        </label>
+
+        <label class="span2">
+          Estado
+          <select id="eStatus">
+            <option value="reading">Leyendo</option>
+            <option value="finished">Terminado</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row end">
+        <button id="btnCancel" class="btn" type="button">Cancelar</button>
+        <button class="btn primary" type="submit" value="save">Guardar cambios</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
