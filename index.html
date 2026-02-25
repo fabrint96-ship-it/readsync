@@ -1,183 +1,424 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ReadSync — Marcapáginas Digital</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReadSync | Marcapáginas digital</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="heroInner">
-      <div class="brand">
-        <div class="mark" aria-hidden="true">📖</div>
-        <div>
-          <h1>ReadSync</h1>
-          <p>Tu marcapáginas digital con aire de biblioteca</p>
+  <!-- Top Bar -->
+  <header class="topbar">
+    <nav class="nav container">
+      <a class="brand" href="#inicio" aria-label="ReadSync - Inicio">
+        <img src="logo.jpeg" alt="Logo ReadSync" class="brand__logo" />
+        <span class="brand__name">ReadSync</span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a class="nav__link active" href="#inicio">Inicio</a></li>
+        <li><a class="nav__link" href="#producto">Producto</a></li>
+        <li><a class="nav__link" href="#tabs">Servicios</a></li>
+        <li><a class="nav__link" href="#opiniones">Opiniones</a></li>
+        <li><a class="nav__link" href="#contacto">Contacto</a></li>
+        <li><a class="btn btn--small" href="#contacto">Solicitar demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main id="inicio" class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="pill">📚 Marcapáginas digital + app</p>
+        <h1>Registra tus lecturas, comparte tu progreso y guarda notas en segundos.</h1>
+        <p class="hero__lead">
+          ReadSync ofrece un dispositivo digital capaz de <strong>leer el código de barras</strong>,
+          <strong>añadir notas</strong>, <strong>sincronizar tu progreso</strong> y <strong>compartirlo</strong>
+          con tu comunidad… y mucho más.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn" href="#tabs">Ver servicios</a>
+          <a class="btn btn--ghost" href="#producto">Cómo funciona</a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__num">+12k</span>
+            <span class="stat__label">lecturas registradas</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">4,8/5</span>
+            <span class="stat__label">valoración media</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">Madrid</span>
+            <span class="stat__label">soporte local</span>
+          </div>
         </div>
       </div>
 
-      <div class="heroRight">
-        <div class="searchBox">
-          <input id="search" type="search" placeholder="Buscar por título, autor o etiqueta..." />
-          <select id="filter">
-            <option value="all">Todos</option>
-            <option value="reading">Leyendo</option>
-            <option value="finished">Terminado</option>
-            <option value="favorite">Favoritos</option>
-          </select>
+      <div class="hero__visual">
+        <div class="card glass hero__card">
+          <div class="hero__cardTop">
+            <span class="dot dot--a"></span>
+            <span class="dot dot--b"></span>
+            <span class="dot dot--c"></span>
+            <span class="chip">Sincronizado</span>
+          </div>
+
+          <div class="hero__imgWrap">
+            <!-- Imagen: marcapáginas digital y su uso (puedes cambiarla por otra) -->
+            <img
+              src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1200&q=80"
+              alt="Uso de un marcapáginas digital leyendo y registrando libros"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="hero__mini">
+            <div class="mini">
+              <span class="mini__icon">🔎</span>
+              <div>
+                <p class="mini__title">Escaneo rápido</p>
+                <p class="mini__desc">Detecta el libro por código de barras.</p>
+              </div>
+            </div>
+            <div class="mini">
+              <span class="mini__icon">📝</span>
+              <div>
+                <p class="mini__title">Notas & marcadores</p>
+                <p class="mini__desc">Guarda ideas sin perder el hilo.</p>
+              </div>
+            </div>
+            <div class="mini">
+              <span class="mini__icon">🤝</span>
+              <div>
+                <p class="mini__title">Comparte progreso</p>
+                <p class="mini__desc">Clubes de lectura y amigos.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="heroActions">
-          <button id="btnExport" class="btn ghost" type="button">Exportar</button>
-          <label class="btn ghost filelike" for="fileImport">Importar</label>
-          <input id="fileImport" type="file" accept="application/json" hidden />
+        <div class="sparkle" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="wave" aria-hidden="true"></div>
+  </main>
+
+  <!-- Product -->
+  <section id="producto" class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>El marcapáginas digital que te acompaña en cada capítulo</h2>
+        <p>
+          Un dispositivo ligero y cómodo que se integra con tu biblioteca. Escanea, registra, anota,
+          y sincroniza con tu cuenta ReadSync.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="feature card">
+          <div class="feature__icon">📷</div>
+          <h3>Lectura de código de barras</h3>
+          <p>Registra libros al instante escaneando el código (ISBN) con precisión.</p>
+        </article>
+
+        <article class="feature card">
+          <div class="feature__icon">☁️</div>
+          <h3>Sincronización en la nube</h3>
+          <p>Tu progreso y notas siempre disponibles en móvil, tablet o PC.</p>
+        </article>
+
+        <article class="feature card">
+          <div class="feature__icon">🔐</div>
+          <h3>Privacidad primero</h3>
+          <p>Control total: decide qué compartes y con quién. Configuración por perfil.</p>
+        </article>
+      </div>
+
+      <div class="split card soft">
+        <div class="split__text">
+          <h3>Así funciona (en 3 pasos)</h3>
+          <ol class="steps">
+            <li><strong>Escanea</strong> el código de barras del libro.</li>
+            <li><strong>Registra</strong> páginas leídas y añade notas o marcadores.</li>
+            <li><strong>Comparte</strong> tu progreso con tu club o amigos (opcional).</li>
+          </ol>
+          <a class="btn btn--ghost" href="#tabs">Ver todo lo que incluye</a>
+        </div>
+
+        <div class="split__media">
+          <!-- Imagen de producto (puedes sustituir por una tuya en local) -->
+          <img
+            src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80"
+            alt="Libro abierto con marcador, ejemplo de lectura"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap">
-    <section class="panel addPanel">
-      <div class="panelHead">
-        <h2>Añadir lectura</h2>
-        <p class="muted">Guarda el progreso como si fuese un marcapáginas.</p>
+  <!-- Tabs / Services -->
+  <section id="tabs" class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <h2>Servicios ReadSync</h2>
+        <p>Una experiencia completa: dispositivo, app, y comunidad lectora.</p>
       </div>
 
-      <form id="bookForm" class="form">
-        <div class="grid">
-          <label>
-            Título
-            <input id="title" required placeholder="Ej: El nombre del viento" />
-          </label>
+      <div class="tabs card">
+        <div class="tabs__bar" role="tablist" aria-label="Servicios">
+          <button class="tab active" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" data-tab="1">
+            Funciones
+          </button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" data-tab="2">
+            Comunidad
+          </button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" data-tab="3">
+            Planes
+          </button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-4" id="tab-4" data-tab="4">
+            FAQ
+          </button>
+        </div>
 
-          <label>
-            Autor/a
-            <input id="author" required placeholder="Ej: Patrick Rothfuss" />
-          </label>
-
-          <label>
-            Páginas totales
-            <input id="pages" type="number" min="1" required placeholder="Ej: 720" />
-          </label>
-
-          <label>
-            Página actual
-            <input id="current" type="number" min="0" required placeholder="Ej: 120" />
-          </label>
-
-          <label class="span2">
-            Etiquetas (comas)
-            <input id="tags" placeholder="fantasía, noche, relax" />
-          </label>
-
-          <label class="span2">
-            Color del lomo
-            <div class="colorRow">
-              <input id="spineColor" type="color" value="#7aa8ff" aria-label="Color del lomo del libro" />
-              <div class="swatches" aria-label="Colores rápidos">
-                <button class="sw" type="button" data-color="#7aa8ff" aria-label="Azul suave"></button>
-                <button class="sw" type="button" data-color="#ffb86b" aria-label="Melocotón"></button>
-                <button class="sw" type="button" data-color="#8be7c3" aria-label="Menta"></button>
-                <button class="sw" type="button" data-color="#d8a9ff" aria-label="Lavanda"></button>
-                <button class="sw" type="button" data-color="#ffd66b" aria-label="Amarillo suave"></button>
+        <div class="tabs__panels">
+          <div class="panel active" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+            <div class="panel__grid">
+              <div>
+                <h3>Todo lo esencial para leer mejor</h3>
+                <ul class="checklist">
+                  <li>📚 Biblioteca personal con historial de lecturas</li>
+                  <li>🧾 Escaneo por ISBN y detección rápida</li>
+                  <li>📝 Notas, citas y marcadores por capítulo</li>
+                  <li>📊 Estadísticas: racha, ritmo y objetivos</li>
+                </ul>
+              </div>
+              <div class="panel__card">
+                <p class="panel__badge">Tip</p>
+                <p class="panel__big">“Marca una frase, añade nota y compártela en 1 toque.”</p>
+                <p class="muted">Ideal para clubes de lectura, estudio o lecturas técnicas.</p>
               </div>
             </div>
-          </label>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2">
+            <div class="panel__grid">
+              <div>
+                <h3>Comparte y aprende</h3>
+                <ul class="checklist">
+                  <li>🤝 Comparte progreso con amigos y grupos</li>
+                  <li>💬 Comentarios y recomendaciones</li>
+                  <li>🏆 Retos de lectura mensuales</li>
+                  <li>🔔 Notificaciones configurables</li>
+                </ul>
+              </div>
+              <div class="panel__card">
+                <p class="panel__badge">Madrid</p>
+                <p class="panel__big">Soporte cercano y actualizaciones frecuentes.</p>
+                <p class="muted">Atención en horario laboral (España) y recursos online.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3">
+            <div class="pricing">
+              <article class="price card">
+                <h3>Básico</h3>
+                <p class="price__value">Gratis</p>
+                <ul>
+                  <li>Registro manual</li>
+                  <li>Notas básicas</li>
+                  <li>Estadísticas simples</li>
+                </ul>
+                <a href="#contacto" class="btn btn--ghost btn--full">Empezar</a>
+              </article>
+
+              <article class="price card price--featured">
+                <div class="ribbon">Recomendado</div>
+                <h3>Plus</h3>
+                <p class="price__value">9,99€ <span>/mes</span></p>
+                <ul>
+                  <li>Sincronización completa</li>
+                  <li>Escaneo por código</li>
+                  <li>Compartir progreso</li>
+                  <li>Copias de seguridad</li>
+                </ul>
+                <a href="#contacto" class="btn btn--full">Solicitar demo</a>
+              </article>
+
+              <article class="price card">
+                <h3>Pro</h3>
+                <p class="price__value">19,99€ <span>/mes</span></p>
+                <ul>
+                  <li>Equipos y clubes</li>
+                  <li>Panel avanzado</li>
+                  <li>Moderación</li>
+                  <li>Soporte prioritario</li>
+                </ul>
+                <a href="#contacto" class="btn btn--ghost btn--full">Hablar con ventas</a>
+              </article>
+            </div>
+            <p class="muted small">* Precios de ejemplo para maqueta. Puedes cambiarlos.</p>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4">
+            <div class="faq">
+              <details open>
+                <summary>¿El dispositivo funciona sin internet?</summary>
+                <p>Sí. Puedes registrar y guardar notas offline; al conectarte, se sincroniza.</p>
+              </details>
+              <details>
+                <summary>¿Puedo mantener mi progreso privado?</summary>
+                <p>Claro. Tú decides si compartes progreso, notas o nada.</p>
+              </details>
+              <details>
+                <summary>¿Dónde está la empresa?</summary>
+                <p>ReadSync está en <strong>Madrid, España</strong>. Atención y soporte desde allí.</p>
+              </details>
+              <details>
+                <summary>¿Se pueden exportar notas?</summary>
+                <p>Sí. Exportación a PDF/CSV en planes Plus/Pro (editable en el código si lo necesitas).</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="opiniones" class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Opiniones reales de lectores</h2>
+        <p>Comentarios positivos de personas que usan ReadSync en su día a día.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="testimonial card">
+          <div class="stars" aria-label="5 estrellas">★★★★★</div>
+          <p>
+            “Desde que uso ReadSync, registro mis libros en segundos. Las notas por capítulo me han
+            cambiado la forma de estudiar.”
+          </p>
+          <div class="who">
+            <span class="avatar">A</span>
+            <div>
+              <strong>Ana M.</strong>
+              <span class="muted">Lectora habitual</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial card">
+          <div class="stars" aria-label="5 estrellas">★★★★★</div>
+          <p>
+            “Lo mejor es compartir el progreso con mi club de lectura. Es sencillo, bonito y muy rápido
+            para escanear libros.”
+          </p>
+          <div class="who">
+            <span class="avatar">J</span>
+            <div>
+              <strong>Javier R.</strong>
+              <span class="muted">Club de lectura</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial card">
+          <div class="stars" aria-label="5 estrellas">★★★★★</div>
+          <p>
+            “La sincronización es impecable. Empiezo en el libro, apunto una idea y la tengo al momento
+            en el móvil.”
+          </p>
+          <div class="who">
+            <span class="avatar">L</span>
+            <div>
+              <strong>Laura G.</strong>
+              <span class="muted">Universidad</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contacto" class="section section--alt">
+    <div class="container">
+      <div class="contact card">
+        <div class="contact__info">
+          <h2>Contacto</h2>
+          <p class="muted">
+            Estamos en <strong>Madrid, España</strong>. Escríbenos para una demo, dudas o colaboración.
+          </p>
+
+          <ul class="contact__list">
+            <li><span>📍</span> Madrid, España</li>
+            <li><span>✉️</span> contacto@readsync.com</li>
+            <li><span>☎️</span> +34 600 000 000</li>
+          </ul>
+
+          <div class="contact__note">
+            <p class="muted small">* Email y teléfono son de ejemplo para la maqueta.</p>
+          </div>
         </div>
 
-        <div class="row">
-          <button class="btn primary" type="submit">Guardar</button>
-          <button id="btnClear" class="btn" type="button">Limpiar</button>
+        <form class="contact__form" id="contactForm">
+          <div class="field">
+            <label for="name">Nombre</label>
+            <input id="name" name="name" type="text" placeholder="Tu nombre" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="tu@email.com" required />
+          </div>
+
+          <div class="field">
+            <label for="msg">Mensaje</label>
+            <textarea id="msg" name="msg" rows="5" placeholder="Cuéntanos qué necesitas..." required></textarea>
+          </div>
+
+          <button class="btn btn--full" type="submit">Enviar</button>
+          <p class="muted small" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img src="logo.jpeg" alt="Logo ReadSync" class="footer__logo" />
+        <div>
+          <strong>ReadSync</strong>
+          <p class="muted small">Tu lectura, sincronizada.</p>
         </div>
-
-        <div class="statsBar">
-          <span id="stats" class="muted"></span>
-          <span class="muted">Tip: marca favoritos con ⭐ y usa “Leyendo/Terminado”.</span>
-        </div>
-      </form>
-    </section>
-
-    <section class="panel shelfPanel">
-      <div class="panelHead shelfHead">
-        <h2>Estantería</h2>
-        <div class="sortRow">
-          <select id="sort">
-            <option value="recent">Más recientes</option>
-            <option value="progress">Más avanzados</option>
-            <option value="az">A → Z</option>
-            <option value="spine">Color del lomo</option>
-          </select>
-        </div>
       </div>
 
-      <div id="tagBar" class="tagBar" aria-label="Filtros por etiqueta"></div>
-
-      <div id="empty" class="empty" hidden>
-        <div class="emptyIcon" aria-hidden="true">📚</div>
-        <h3>Tu estantería está vacía</h3>
-        <p>Añade tu primera lectura o importa un JSON.</p>
+      <div class="footer__links">
+        <a href="#inicio">Inicio</a>
+        <a href="#producto">Producto</a>
+        <a href="#tabs">Servicios</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto">Contacto</a>
       </div>
 
-      <div id="grid" class="shelf" aria-live="polite"></div>
-    </section>
-  </main>
+      <p class="muted small">© <span id="year"></span> ReadSync — Madrid, España.</p>
+    </div>
+  </footer>
 
-  <!-- Modal editar -->
-  <dialog id="editDialog" class="modal">
-    <form id="editForm" method="dialog" class="modalBody">
-      <div class="modalHead">
-        <h3>Editar lectura</h3>
-        <button id="btnCloseModal" class="iconBtn" type="button" aria-label="Cerrar">✕</button>
-      </div>
-
-      <div class="grid">
-        <label>
-          Título
-          <input id="eTitle" required />
-        </label>
-
-        <label>
-          Autor/a
-          <input id="eAuthor" required />
-        </label>
-
-        <label>
-          Páginas totales
-          <input id="ePages" type="number" min="1" required />
-        </label>
-
-        <label>
-          Página actual
-          <input id="eCurrent" type="number" min="0" required />
-        </label>
-
-        <label class="span2">
-          Etiquetas (comas)
-          <input id="eTags" />
-        </label>
-
-        <label class="span2">
-          Color del lomo
-          <input id="eColor" type="color" />
-        </label>
-
-        <label class="span2">
-          Estado
-          <select id="eStatus">
-            <option value="reading">Leyendo</option>
-            <option value="finished">Terminado</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="row end">
-        <button id="btnCancel" class="btn" type="button">Cancelar</button>
-        <button class="btn primary" type="submit" value="save">Guardar cambios</button>
-      </div>
-    </form>
-  </dialog>
-
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
